@@ -95,10 +95,10 @@ WSGI_APPLICATION = 'recipeWebsiteProject.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'veresen13$default',
-#         'USER': 'veresen13',
+#         'NAME': 'veresen14$default',
+#         'USER': 'veresen14',
 #         'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-#         'HOST': 'veresen13.mysql.pythonanywhere-services.com',
+#         'HOST': 'veresen14.mysql.pythonanywhere-services.com',
 #         'OPTIONS': {
 #             'init_command': "SET NAMES 'utf8mb4'; SET sql_mode='STRICT_TRANS_TABLES'",
 #             'charset': 'utf8mb4',
@@ -144,7 +144,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 if not DEBUG:
-    STATIC_ROOT = BASE_DIR / 'static/'
+    STATIC_ROOT = BASE_DIR /'static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/'),
