@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Все рецепты {{ user }}{% endblock %}
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="message">{% if message.tags %} {% endif %}{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <h3 class="main_title">Все рецепты {{ user }}</h3>
+    {% csrf_token %}
+
+    {% if clear_recipes %}
+        <table class="all_recipes">
+            <tr class="five_recipes_in_row">
+                {% for recipe in clear_recipes %}
+                    <td>
+                        <a class="five_recipes_link" href="{% url 'show_full_recipe' recipe.id %}">{{ recipe.name }}<br><br>
+                            <img class="recipe_mini_image" src="{{ recipe.img.url }}" alt="{{ recipe.name }}"></a><br>
+                        <a href="{% url 'edit_recipe' recipe.id %}">Редактировать</a><br>
+                        <a href="{% url 'delete_recipe' recipe.id %}">Удалить</a><br>
+                        {{ recipe.get_summary }}
+                    </td>
+                {% endfor %}
+            </tr>
+        </table>
+    {% else %}
+    <div class="no_recipes">
+        <p class="main_text">Книга рецептов пуста.</p>
+        <br>
+        <img class="cookbook" src="{% static 'img/cookbook.png' %}" alt="Cookbook Image">
+        <br>
+        <p class="main_text">Добавьте рецепт <a href="{% url 'add_recipe' %}">ЗДЕСЬ</a>
+        </p>
+    </div>
+    {% endif %}
+{% endblock %}
